@@ -1,0 +1,277 @@
+/**
+ * Animation Part 3
+ *
+ * @author - Jibril Tunrer
+ * @author - B2
+ *
+ *@author - i got help from my brain
+ */
+
+import java.awt.*;
+
+
+public class Main extends Frame implements Runnable {
+
+
+    private Thread t;
+    private Graphics page;
+
+    public Main() {
+        Thread t = new Thread(this);
+        t.start();
+    }
+
+    public void run() {
+        // required to be here for the Runnable interface
+    }
+
+
+    /*
+     * paint - called at beginning of program and whenever repaint is
+     * called.
+     */
+    public void paint(Graphics p) {
+        page = p; // do not remove this line unless you want to break your project!
+        first();  // basic animation
+        g();  // complex animation - uses drawPerson method
+        oneballdrop();  // complex animation - uses drawPerson method
+        twoballdrop();  // complex animation - uses drawPerson method
+        threeballdrop();  // complex animation - uses drawPerson method
+        fourballdrop();  // complex animation - uses drawPerson method
+        drawLightning();  // complex animation - uses drawPerson method
+        drawBackground();  // complex animation - uses drawPerson method
+
+    }
+
+
+    private void first() {
+
+    }
+    private void g() {
+        {
+            // STANDING BOX
+            page.setColor(new Color(148, 74, 21, 255));
+            page.fillRect(30, 300, 110, 50);
+
+            page.setColor(new Color(255, 215, 215, 255));
+            // TORSO
+            page.fillOval(87, 190, 35, 35);
+            page.fillRect(100, 220, 10, 40);
+            // ARMS
+            page.drawLine(70, 230, 140, 230);
+            // LEGS
+            page.drawLine(110, 300, 110, 250);
+            page.drawLine(100, 300, 100, 250);
+            // Ball
+            page.setColor(new Color(253, 0, 249, 255));
+            page.fillOval(140, 220, 20, 20);
+
+
+
+
+            page.setColor(new Color(23, 84, 203, 104));
+            page.fillRect(0,0,6000,2050);
+
+            // draw the grass - a green rectangleDid he smile his work to see?
+            page.setColor(new Color(55, 188, 31, 106));
+            page.fillRect(0,350,600,150);
+            // draw the sun - a yellow circle
+            page.setColor(new Color(255, 199, 0, 255));
+            page.fillOval(70,70,40,40);
+
+
+            myDelay(1000);
+            page.setColor(new Color(255, 255, 255, 255));
+            page.fillRect(0,0,6000,2050);
+
+            // draw the grass - a green rectangleDid he smile his work to see?
+            page.setColor(new Color(255, 255, 255, 255));
+            page.fillRect(0,250,600,150);
+
+            // draw the sun - a yellow circle
+            page.setColor(new Color(255, 255, 255, 255));
+            page.fillOval(70,70,40,40);
+        }
+    }
+
+
+
+    private void oneballdrop() {
+        page.setColor(new Color(	210, 222, 244));
+        page.fillRect(0,0,6000,2050);
+
+        // draw the grass - a green rectangleDid he smile his work to see?
+        page.setColor(new Color(26, 255, 0, 106));
+        page.fillRect(0,250,600,150);
+
+        // draw the sun - a yellow circle
+        page.setColor(new Color(255, 208, 0, 255));
+        page.fillOval(70,70,40,40);
+        {
+            for (int i = 300, j = 0; i > 0 && j < 200; i++, j++) {
+
+                page.setColor(new Color(201, 3, 255));
+                page.fillOval(j + 1, i + -320, 70, 70);
+
+                myDelay(10);
+
+
+
+                page.setColor(new Color(	210, 222, 244));
+                page.fillOval(j + 1, i + -320, 70, 70);
+            }
+        }
+    }
+
+    private void twoballdrop() {
+
+        {
+            for (int i = 0, j = 0, l=0;l < 200 && i < 200 && j < 200; i++, j++,l++) {
+
+                page.setColor(new Color(0xDB0BF5));
+                page.fillOval(j + 200, -i + 150, 70, 70);
+
+
+                myDelay(10);
+
+
+                page.setColor(new Color(	210, 222, 244));
+                page.fillOval(j + 200, -i + 150, 70, 70);
+
+                page.setColor(new Color(	210, 222, 244));
+                page.fillRect(0,250,600,l);
+            }
+        }
+    }
+
+    private void threeballdrop() {
+
+        {
+            for (int i = 400, j = 0, l = 0; i > 350 && l < 200 && j < 200;l++, i++, j++) {
+                System.out.println("i = " + i + " :: " + "j = " + j + " :: " + "l = " + l);
+
+                page.setColor(new Color(201, 3, 255));
+                page.fillOval(j + 1, i + -365, 70, 70);
+
+                myDelay(10);
+
+
+
+                page.setColor(new Color(	210, 222, 244));
+                page.fillOval(j + 1, i + -365, 70, 70);
+
+                page.setColor(new Color(59, 169, 52, 106));
+                page.fillRect(0,500,600,-l);
+            }
+        }
+    }
+
+    private void fourballdrop() {
+
+        {
+            for (int i = -40, j = 140, l=0;l < 200 && i < 200 && j < 200; i++, j++,l++) {
+
+                page.setColor(new Color(0xDB0BF5));
+                page.fillOval(j + 100, -i + 170, 70, 70);
+
+
+                myDelay(10);
+
+
+                page.setColor(new Color(	210, 222, 244));
+                page.fillOval(j + 100, -i + 170, 70, 70);
+            }
+        }
+    }
+    private void drawLightning()
+
+    {
+        int [] xCoords = {300,330,325,335,330,340,335,345,345,340,340,335,335,330,330};
+        int [] yCoords = {50,70,60,110,100,150,140,190,130,140,80,90,30,40,50,};
+
+        Polygon lightning = new Polygon(xCoords, yCoords, xCoords.length);
+        page.setColor(new Color(0xDB0BF5));
+        page.fillArc(300, 160, 70, 70, 90, 180);
+
+
+        page.setColor(new Color(0xDB0BF5));
+        page.fillArc(310, 170, 70, 70, 270, 180);
+
+        page.setColor(new Color(221, 101, 0, 255));
+        page.setFont(new Font("Georgia", Font.ITALIC, 18));
+        page.drawString("POP!!!", 320, 260 );
+
+
+        page.setFont(new Font("ARIAL",Font.BOLD,72));
+
+
+
+        for(int i = 0; i < 4; i++)
+        {
+            page.setColor(new Color(255, 246, 0, 255));
+            page.fillPolygon(lightning);
+
+            myDelay(1000);
+
+            page.setColor(new Color(	210, 222, 244));
+            page.fillPolygon(lightning);
+
+            myDelay(1000);
+        }
+    }
+
+    private void drawBackground()
+    {
+        // draw the sky - a blue rectangle
+
+        page.setColor(new Color(15, 121, 200));
+        page.fillRect(0,0,6000,2050);
+
+        // draw the grass - a green rectangleDid he smile his work to see?
+        page.setColor(new Color(255, 0, 0, 106));
+        page.fillRect(0,250,600,150);
+
+        // draw the sun - a yellow circle
+        page.setColor(new Color(255, 246, 0, 255));
+        page.fillOval(70,70,40,40);
+
+
+        myDelay(1000);
+
+
+
+        page.setColor(new Color(255, 255, 255));
+        page.fillRect(0,0,6000,2050);
+
+        // draw the grass - a green rectangleDid he smile his work to see?
+        page.setColor(new Color(255, 255, 255, 255));
+        page.fillRect(0,250,600,150);
+
+        // draw the sun - a yellow circle
+        page.setColor(new Color(255, 255, 255, 255));
+        page.fillOval(70,70,40,40);
+    }
+    /*
+     * myDelay - passes in a delay value (in milliseconds).  Uses threads
+     * to make this thread sleep for the specified amount of time.
+     */
+    private void myDelay(int delay)
+    {
+        try
+        {
+            Thread.sleep(delay);
+        }
+        catch(InterruptedException e)
+        {
+            // no action
+        }
+    }//end of myDelay
+    public static void main(String[] args)
+    {
+        Main f = new Main ();
+        f.setSize(600,400);
+        f.setVisible(true);
+        f.setLayout(new FlowLayout());
+    }//end of main method
+
+}//end of class
